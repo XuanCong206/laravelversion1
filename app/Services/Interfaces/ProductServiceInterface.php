@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Services\Interfaces;
+
+/**
+ * Interface ProductServiceInterface
+ * @package App\Services\Interfaces
+ */
+interface ProductServiceInterface
+{
+    public function paginate($request);
+
+    public function create($productData);
+
+    // public function update($id,$productData);
+
+}
+
+

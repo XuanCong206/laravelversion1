@@ -1,0 +1,75 @@
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+.ml0 {
+    margin-left: 0px;
+}
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+h5 {
+    text-transform: uppercase;
+}
+
+.dflex {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+}
+.fs16 {
+    color: white;
+    font-size: 16px;
+}
+
+.uk-flex-space-between {
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.uk-flex-middle {
+    -ms-flex-align: center;
+    -webkit-align-item: center;
+    align-items: center;
+}
+.filer .perpage {
+    display: inline-block;
+}
+
+.box .ibox {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-label {
+    display: block;
+}
+
+.img-banner-siderbar {
+    width: 110px;
+}
+
+.ibox-content2 {
+    font-size: 14px;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 8px;
+}
+.user-info-title {
+    font-weight: bold;
+    color: black;
+}
