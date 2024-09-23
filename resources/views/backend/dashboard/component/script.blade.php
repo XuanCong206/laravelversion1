@@ -5,6 +5,10 @@
 <script src="backend/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="backend/library/library.js"></script>
 
+<script src="backend/library/library.js"></script>
+<script src="backend/library/order.js"></script>
+
+
 <!-- jQuery UI -->
 <script src="backend/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 

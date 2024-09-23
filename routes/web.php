@@ -112,18 +112,17 @@ Route::group(['prefix'=>'user'] , function(){
     Route::post('order/store',[OrderController::class,'store']) ->name('order.store')
     ->middleware(AuthenticateMiddleware::class);
 
-    // Route::get('order/{id}/edit',[OrderController::class,'edit'])->where(['id'=>'[0-9]+']) ->name('order.edit')
-    // ->middleware(AuthenticateMiddleware::class);
+  // Lấy chi tiết 1 đơn hàng (Áp dụng show form sửa đơn hàng)
+  Route::get('/{id}/order/edit',[OrderController::class,'edit'])->where(['id'=>'[0-9]+'])->name('order.edit');
 
-    // Route::post('{id}/update',[UserController::class,'update'])->where(['id'=>'[0-9]+']) ->name('user.update')
-    // ->middleware(AuthenticateMiddleware::class);
+  // Cập nhật 1 chuyên mục (Áp dụng show form sửa chuyên mục)
+  Route::post('/{id}/order/update',[OrderController::class,'update'])->where(['id'=>'[0-9]+'])->name('order.update');
 
-    // Route::get('{id}/delete',[UserController::class,'delete'])->where(['id'=>'[0-9]+']) ->name('user.delete')
-    // ->middleware(AuthenticateMiddleware::class);
 
-    // Route::delete('{id}/destroy',[UserController::class,'destroy'])->where(['id'=>'[0-9]+']) ->name('user.destroy')
-    // ->middleware(AuthenticateMiddleware::class);
+   // xóa chuyên mục.
+   Route::get('/{id}/order/delete',[OrderController::class,'delete'])->where(['id'=>'[0-9]+'])->name('order.delete');
 
+   Route::delete('/{id}/order/destroy',[OrderController::class,'destroy'])->where(['id'=>'[0-9]+'])->name('order.destroy');
 });
 
 // Route::get('/api/users/{id}', [App\Http\Controllers\Backend\OrderController::class, 'getUserInfo']);

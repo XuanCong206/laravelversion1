@@ -17,6 +17,15 @@ return new class extends Migration
                 $table->dropUnique(['order_number']); // Xóa unique index nếu có
             }
             $table->string('order_number')->nullable()->change(); // Cho phép null để sau này tự động cập nhật
+
+
+            // Xóa cột total_amount nếu tồn tại
+            if (Schema::hasColumn('orders', 'total_amount')) {
+                $table->dropColumn('total_amount');
+            }
+
+            // Đặt giá trị mặc định cho cột status là 'pending'
+            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending')->change();
         });
     }
 
@@ -28,6 +37,12 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             // Khôi phục lại unique nếu cần
             $table->string('order_number')->unique()->change();
+
+             // Thêm lại cột total_amount khi rollback
+             $table->decimal('total_amount', 10, 2);
+
+             // Khôi phục lại giá trị status mà không có giá trị mặc định
+             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->change();
         });
     }
 };

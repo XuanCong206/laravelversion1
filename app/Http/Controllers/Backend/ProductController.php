@@ -132,7 +132,7 @@ class ProductController extends Controller
         $imagesData = $this->productService->handleImages($request, json_decode($product->galery, true), $product->feature_image);
         
          // Tạo slug từ tên sản phẩm, kiểm tra tính duy nhất
-          $slug = Product::generateSlug($request->input('name'));
+          $slug = Product::generateSlug($request->input('name'),$id);
 
         // Tạo dữ liệu sản phẩm với thông tin ảnh
         $productData = array_merge($request->validated(), $imagesData,['slug' => $slug]);
@@ -189,9 +189,8 @@ class ProductController extends Controller
         // Lấy giao diện chi tiết sản phẩm của product trong view
         // $template = 'backend.product.show';
         return view('backend.product.show', compact(
-  
             'product'
-            ));
+        ));
     }
 
 }

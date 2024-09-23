@@ -29,6 +29,15 @@ class AppServiceProvider extends ServiceProvider
 
          'App\Repositories\Interfaces\ProductRepositoryInterface' 
         => 'App\Repositories\ProductRepository',
+
+        'App\Services\Interfaces\OrderServiceInterface' 
+        => 'App\Services\OrderService',
+
+        'App\Repositories\Interfaces\OrderRepositoryInterface' 
+       => 'App\Repositories\OrderRepository',
+
+       'App\Repositories\Interfaces\OrderProductRepositoryInterface' 
+       => 'App\Repositories\OrderProductRepository',
         
    
     ];

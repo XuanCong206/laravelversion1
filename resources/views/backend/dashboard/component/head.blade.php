@@ -23,3 +23,9 @@
 <link href="backend/css/style.css" rel="stylesheet">
 <link href="backend/css/customize.css" rel="stylesheet">
 <script src="backend/js/jquery-3.1.1.min.js"></script>
+
+{{-- --}}
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+{{-- <script src="https://cdn.ckeditor.com/4.25.0/standard/ckeditor.js"></script> --}}

@@ -45,34 +45,44 @@ class Product extends Model
 
     // Tự động tạo slug từ tên sản phẩm
     public static function generateSlug($name, $productId = null)
-    {
-        // Chuyển tên sản phẩm thành slug
-        $slug = Str::slug($name);
+        {
+            // Chuyển tên sản phẩm thành slug
+            $slug = Str::slug($name);
 
-        // Kiểm tra xem slug đã tồn tại hay chưa
-        $originalSlug = $slug;
-
-        // Nếu đang chỉnh sửa sản phẩm , không cần tạo slug mới trừ khi slug trùng.
-        if($productId){
-            // Lấy slug cũ của sản phẩm.
-            $product = self::find($productId);
-            if ($product && $product->slug == $slug) {
-                // Giữ nguyên slug nếu nó không thay đổi
-                return $slug;
+            // Nếu đang chỉnh sửa sản phẩm (tức là có productId)
+            if ($productId) {
+                // Lấy sản phẩm từ database
+                $product = self::find($productId);
+                
+                // Nếu tên không thay đổi, giữ nguyên slug hiện tại
+                if ($product && $product->name === $name) {
+                    return $product->slug;
+                }
             }
+
+            // Nếu tạo mới hoặc tên sản phẩm đã thay đổi, kiểm tra trùng lặp slug
+            $originalSlug = $slug;
+            $i = 1;
+
+            // Kiểm tra trùng lặp và thêm hậu tố nếu slug đã tồn tại
+            while (self::where('slug', $slug)->where('id', '<>', $productId)->exists()) {
+                $slug = $originalSlug . '-' . $i;
+                $i++;
+            }
+
+            return $slug;
         }
 
-        // Nếu là sản phẩm mới hoặc tên đã thay đổi, kiểm tra sự trùng lặp slug
-        $i = 1;
-        while (self::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $i;
-            $i++;
+
+        // Quan hệ many to many ( nhiều - nhiều ) tới bảng orders.
+        // Hàm withPivot('quantity') giúp bạn truy cập được
+        // cột quantity trong bảng trung gian order_product.
+        public function orders()
+        {
+            return $this->belongsToMany(Order::class,'order_product')
+            ->withPivot('price_at_order_time', 'quantity', 'product_name', 'short_desc', 'desc')
+            ->withTimestamps();
         }
-
-        return $slug;
-    }
-
-
 
   
 }

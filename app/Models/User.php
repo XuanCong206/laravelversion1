@@ -33,6 +33,16 @@ class User extends Authenticatable
         'ip'
     ];
 
+    /*
+    Quan hệ này biểu thị một người dùng (User) có thể thực hiện nhiều đơn đặt hàng (Order),
+        User có nhiều Order (One-to-Many):
+        Trong model User, bạn sử dụng phương thức orders() với quan hệ hasMany(), 
+        điều này nghĩa là một người dùng (User) có thể thực hiện nhiều đơn hàng (Order).
+    */
+        // mối liên hệ giữa Users và Orders
+        public function orders(){
+            return $this->hasMany(Order::class);
+        }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -56,8 +66,16 @@ class User extends Authenticatable
         ];
     }
 
-    // mối liên hệ giữa Users và Orders
-    public function orders(){
-        return $this->hasMany(Order::class);
-    }
+   
 }
+
+/* Hoạt động của quan hệ.
+*  Một User có nhiều Orders: khi truy cập vào 1 người dùng và muốn lấy tât
+cả các đơn hàng của họ, sử dụng:
+    $user = User::find(1);
+    $orders = $user->orders; // lấy tất cả các đơn hàng của người dùng.
+
+* Một Order thuộc về một User : khi truy cập vào 1 đơn hàng và muốn lấy người
+dùng đã đặt đơn hàng đó,
+
+*/

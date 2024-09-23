@@ -25,8 +25,8 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required|string',
             'slug' => 'string',
             'price' => 'required|numeric',
-            'short_desc' => 'required|string',
-            'desc' => 'required|string',
+            // 'short_desc' => 'required|string',
+            // 'desc' => 'required|string',
         ];
     }
 
@@ -38,8 +38,8 @@ class UpdateProductRequest extends FormRequest
             // 'slug.unique' => 'Slug đã tồn tại. Hãy thử lại.',
             'price.required' => 'Bạn chưa nhập giá sản phẩm',
             'price.numeric' => 'Giá sản phẩm phải là số',
-            'short_desc.required' => 'Bạn chưa mô tả ngắn ngắn',
-            'desc.required' => 'Bạn chưa mô tả ngắn ngắn',
+            // 'short_desc.required' => 'Bạn chưa mô tả ngắn ngắn',
+            // 'desc.required' => 'Bạn chưa mô tả ngắn ngắn',
             
         ];
     }

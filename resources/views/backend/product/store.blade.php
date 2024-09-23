@@ -90,7 +90,7 @@ $url = ($config['method']== 'create') ? route('product.store')
                                     <label for="" class="control-label text-left">
                                         Mô tả ngắn
                                     </label>
-                                    <textarea type="text-area" name="short_desc"
+                                    <textarea id="short_desc" name="short_desc"
                                         class="form-control">{{ old('short_desc', ($product->short_desc) ?? '' ) }}</textarea>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@ $url = ($config['method']== 'create') ? route('product.store')
                                     <label for="" class="control-label text-left">
                                         Mô tả Chi Tiết
                                     </label>
-                                    <textarea type="text-area" name="desc" class="form-control" placeholder=""
+                                    <textarea id="desc" name="desc" class="form-control" placeholder=""
                                         rows="4">{{ old('desc', ($product->desc) ?? '' ) }}</textarea>
                                 </div>
                             </div>
@@ -187,20 +187,6 @@ $url = ($config['method']== 'create') ? route('product.store')
     </div>
 </form>
 
-{{-- <script>
-    $(document).ready(function () {
-        $("#productName").on("input", function () {
-            console.log(123)
-            var name = $(this).val();
-            var slug = name
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/^-+|-+$/g, "");
-
-            $("#productSlug").val(slug);
-        });
-    });
-</script> --}}
 
 <script>
     // Hàm JavaScript để xem trước ảnh ngay khi người dùng chọn file
@@ -227,4 +213,16 @@ $url = ($config['method']== 'create') ? route('product.store')
             galleryPreview.appendChild(imgElement); // Thêm ảnh vào div preview
         }
     }
+
+
+    // Khởi tạo CKEditor cho các trường mô tả
+    CKEDITOR.replace('short_desc');
+    CKEDITOR.replace('desc');
+
+ 
+  
+
+
+
+
 </script>

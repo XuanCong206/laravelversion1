@@ -73,7 +73,7 @@ class ProductService implements ProductServiceInterface
         try{
          
             $product = $this->productRepository->findById($id);
-              $product->update($productData);
+            $product->update($productData);
             DB::commit();
             return true;
         }catch(\Exception $e ){

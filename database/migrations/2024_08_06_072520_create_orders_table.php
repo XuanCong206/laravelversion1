@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Khóa ngoại liên kết với bảng users
             $table->string('order_number')->unique();
-            $table->decimal('total_amount', 10, 2);
+            $table->decimal('total_amount', 10, 3)->default(0.000)->change();
             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled']);
             $table->timestamps();
         });
